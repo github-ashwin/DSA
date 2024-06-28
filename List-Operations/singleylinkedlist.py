@@ -24,7 +24,7 @@ class LinkedList:
             itr = itr.next
         print(ll)
 
-    def insert_end(self,data):
+    def insert_end(self, data):
         if self.head is None: # If Linked list is empty -> self.head will be None
             self.head = Node(data, None) # The new node will be the head
             return
@@ -36,10 +36,10 @@ class LinkedList:
 
             temp.next = Node(data, None) # Inserting at end
         
-    # def insert_values(self,data_list):
-    #     self.head = None
-    #     for data in data_list:
-    #         self.insert_end(data)
+    def insert_values(self, data_list):
+        self.head = None
+        for data in data_list:
+            self.insert_end(data)
         
     def get_length(self):
         itr = self.head
@@ -51,24 +51,24 @@ class LinkedList:
         return count
     
     def remove_at(self, index):
-        if index<0 or index>=self.get_length(): # If Linked list is empty or invalid length
+        if index < 0 or index >= self.get_length(): # If Linked list is empty or invalid length
             raise Exception("Invalid Index")
         
-        if index==0: # If the index is 0, it is head node
+        if index == 0: # If the index is 0, it is head node
             self.head = self.head.next # Removing the head node and pointing to next
             return
         
         count = 0
         itr = self.head
         while itr: # Iterating till it reaches the particular index
-            if count == index-1:
+            if count == index - 1:
                 itr.next = itr.next.next # Removing the particular node
                 break
             itr = itr.next
             count += 1
 
     def insert_at(self, data, index):
-        if index<0 or index>self.get_length(): # If Linked list is empty or invalid length
+        if index < 0 or index > self.get_length(): # If Linked list is empty or invalid length
             raise Exception("Invalid Index")
         
         if index == 0:
@@ -78,21 +78,61 @@ class LinkedList:
         count = 0
         itr = self.head
         while itr:
-            if count == index-1:
+            if count == index - 1:
                 node = Node(data, itr.next)
                 itr.next = node
                 break
             itr = itr.next
             count += 1
 
+    def insert_after_value(self, data_after, data_to_insert):
+        if self.head is None: # Checks if the linked list is empty
+            return
+        
+        if self.head.data == data_after: # If the node to be inserted is second node
+            self.head.next = Node(data_to_insert,self.head.next)
+
+        itr = self.head # Iterate
+        while itr:
+            if itr.data == data_after:
+                itr.next = Node(data_to_insert, itr.next)
+                break
+            itr = itr.next
+    
+    def remove_by_value(self, data):
+        if self.head is None: # Checks if the linked list is empty
+            return
+
+        if self.head.data == data:  # If the node to be removed is the head node.
+            self.head = self.head.next
+            return
+
+        itr = self.head
+        while itr.next:  # Iterate through the list to find the node to remove.
+            if itr.next.data == data:  # Found the node to be removed.
+                itr.next = itr.next.next  # Remove the node by skipping it.
+                return
+            itr = itr.next
+
+
+# Testing the updated LinkedList class
 obj = LinkedList()
 obj.insert_begin(1)
 obj.insert_begin(111)
-obj.print()
+obj.print()  
 obj.insert_end(777)
-obj.print()
-print(obj.get_length())
+obj.print() 
+print(obj.get_length())  
 obj.remove_at(1)
-obj.print()
-obj.insert_at(222,1)
-obj.print()
+obj.print()  
+obj.insert_at(222, 1)
+obj.print()  
+obj.insert_after_value(222, 333)
+obj.print()  
+obj.insert_after_value(333, 555)
+obj.print()  
+obj.remove_by_value(555)
+obj.print()  
+obj.remove_by_value(333)
+obj.print()  
+obj.remove_by_value
