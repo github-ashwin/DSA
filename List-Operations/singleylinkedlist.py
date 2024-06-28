@@ -36,12 +36,12 @@ class LinkedList:
 
             temp.next = Node(data, None) # Inserting at end
         
-    def insert_values(self, data_list):
+    def insert_values(self, data_list): # Insert a list of values
         self.head = None
         for data in data_list:
             self.insert_end(data)
         
-    def get_length(self):
+    def get_length(self): # Getting the list of Linked list
         itr = self.head
         count = 0
         while itr:
