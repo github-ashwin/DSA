@@ -19,3 +19,21 @@ class Stack:
     
     def length(self): # Checking the length of the stack
         return len(self.stack)
+
+def rev_string(str):
+
+    obj = Stack()
+
+    for ch in str:
+        obj.push(ch)
+
+    reverse_string = ''
+
+    while obj.is_empty() is not True:
+        reverse_string += obj.pop()
+
+    return reverse_string
+
+if __name__ == '__main__':
+    print(rev_string("We will conquere COVID-19"))
+
