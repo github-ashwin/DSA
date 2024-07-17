@@ -34,6 +34,22 @@ class BST:
             elements += self.right.inorder_traversal()
 
         return elements
+    
+    def search(self,val):
+        if self.data == val:
+            return True
+        
+        if val < self.data:
+            if self.left:
+                return self.left.search(val)
+            else:
+                False
+
+        if val > self.data:
+            if self.right:
+                return self.right.search(val)
+            else:
+                False
 
 def build_tree(elements):
 
@@ -48,3 +64,4 @@ if __name__ == '__main__':
     numbers = [17,4,1,20,9,23,19,34]
     tree = build_tree(numbers)
     print(tree.inorder_traversal())
+    print(tree.search(2))
