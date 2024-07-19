@@ -51,6 +51,45 @@ class BST:
             else:
                 False
 
+    def find_min(self):
+        if self.left is None:
+            return self.data
+        else:
+            return self.left.find_min()
+        
+    def find_max(self):
+        if self.right is None:
+            return self.data
+        else:
+            return self.right.find_max()
+    
+    def delete_node(self,val):
+        if val < self.data:
+            if self.left:
+                self.left = self.left.delete_node(val)
+            
+        
+        elif val > self.data:
+            if self.right:
+                self.right = self.right.delete_node(val)
+            
+        else:
+            if self.left is None and self.right is None:
+                return None
+            
+            if self.left is None:
+                return self.right
+            
+            if self.right is None:
+                return self.left
+            
+            min = self.right.find_min()
+            self.data = min
+            self.right = self.right.delete_node(min)
+        
+        return self
+
+
 def build_tree(elements):
 
     root = BST(elements[0])
@@ -65,3 +104,5 @@ if __name__ == '__main__':
     tree = build_tree(numbers)
     print(tree.inorder_traversal())
     print(tree.search(2))
+    tree.delete_node(20)
+    print("After deleting 20 :-",tree.inorder_traversal())
