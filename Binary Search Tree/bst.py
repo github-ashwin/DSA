@@ -83,9 +83,15 @@ class BST:
             if self.right is None:
                 return self.left
             
-            min = self.right.find_min()
-            self.data = min
-            self.right = self.right.delete_node(min)
+            # min = self.right.find_min()
+            # self.data = min
+            # self.right = self.right.delete_node(min)
+
+            # Alternate method
+
+            max = self.left.find_max()
+            self.data = max
+            self.left = self.left.delete_node(max)
         
         return self
 
