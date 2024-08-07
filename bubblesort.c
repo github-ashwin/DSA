@@ -20,7 +20,7 @@ int main() {
         
         for(int i=0;i<5;i++)
         {
-            int flag=0;
+            int flag=0; //Optimization
             for(int j=0;j<5-i-1;j++)
             {
                 if(arr[j]>arr[j+1])
