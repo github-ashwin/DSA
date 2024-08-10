@@ -21,9 +21,26 @@ class Result {
     public static void staircase(int n) {
     // Write your code here
     
-    for(int i=n-1;i>=0;i++)
+    int space = 0;
+    int count = 0;
+    String line;
+    char ch = '#'; 
+    for(int i=1;i<=n;i++)
     {
-        
+        line = "";
+        count = i;
+        space = n-i;
+        while(space!=0)
+        {
+            line += ' ';
+            space--;
+        }
+        while(count!=0)
+        {
+            line +=ch;
+            count--;
+        }
+        System.out.println(line);
     }
     }
 
