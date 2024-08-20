@@ -5,7 +5,6 @@ class Solution(object):
         :rtype: int
         """
         val = [ord(char) for char in s]
-        print val
         score = 0
         for i in range(len(val)-1):
             j = i+1
